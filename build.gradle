@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+group 'jp.tentus'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    lombokVersion = '1.16.10'
+    servletApiVersion = '3.1.0'
+    springFrameworkVersion = '4.3.10.RELEASE'
+    springBootVersion = '1.5.6.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("${buildDir}/classes/main/")
+        testOutputDir = file("${buildDir}/classes/test/")
+    }
+}
+
+dependencies {
+    compileOnly("org.projectlombok:lombok:${lombokVersion}")
+
+    compile("javax.servlet:javax.servlet-api:${servletApiVersion}")
+    compile("org.springframework:spring-context:${springFrameworkVersion}")
+    compile("org.springframework:spring-web:${springFrameworkVersion}")
+    compile("org.springframework.boot:spring-boot:${springBootVersion}")
+
+    testCompile("junit:junit:4.12")
+}
+
+jar {
+    baseName = 'mix-spring4'
+}
