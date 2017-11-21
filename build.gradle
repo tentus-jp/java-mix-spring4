@@ -10,6 +10,7 @@ targetCompatibility = 1.8
 
 ext {
     lombokVersion = '1.16.10'
+    jacksonVersion = '2.8.9'
     servletApiVersion = '3.1.0'
     slf4jApiVersion = '1.7.25'
     springFrameworkVersion = '4.3.10.RELEASE'
@@ -31,6 +32,7 @@ idea {
 dependencies {
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
 
+    compile("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
     compile("javax.servlet:javax.servlet-api:${servletApiVersion}")
     compile("org.slf4j:slf4j-api:${slf4jApiVersion}")
     compile("org.springframework:spring-context:${springFrameworkVersion}")
@@ -38,6 +40,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot:${springBootVersion}")
 
     testCompile("junit:junit:4.12")
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
 }
 
 jar {
